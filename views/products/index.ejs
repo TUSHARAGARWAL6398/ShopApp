@@ -1,0 +1,27 @@
+<% layout('layouts/layout') -%>
+<body>
+  <%- include('../partials/navbar') %>
+  <div class="row">
+    <%for(let item of product){%>
+    <div class="col-lg-4 mt-3">
+      <div class="card shadow mx-auto" style="width: 18rem">
+        <img src="<%=item.img%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%=item.name%></h5>
+          <p class="card-text"><%=item.desc%>.</p>
+          <p class="card-text">Rs <%=item.price%>.</p>
+          <a href="/product/<%=item._id%>" class="btn btn-primary">view</a>
+
+          <form
+            class="d-inline-block"
+            action="products/<%=item._id%>?_method=DELETE"
+            method="post"
+          >
+            <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+</body>
